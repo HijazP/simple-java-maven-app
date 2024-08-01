@@ -1,4 +1,5 @@
 node {
+    checkout SCM
     // maven versi 3.9.8
     env.MAVEN_HOME="${tool 'maven'}"
     env.PATH="${env.MAVEN_HOME}/bin:${env.PATH}"

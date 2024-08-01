@@ -9,9 +9,7 @@ node {
         sh "mvn test"
     }
     stage('Docker Build') {
-        sh "ls"
-        sh "pwd"
-        sh "docker build -t hijaz/submisi-cicd-dicoding:latest ."
+        docker.build("hijaz/submisi-cicd-dicoding:latest", "./Dockerfile")
     }
     stage('Manual Approval') {
         input message: "Lanjutkan ke tahap Deploy?"

@@ -9,7 +9,7 @@ node {
         sh "mvn test"
     }
     stage('Docker Build') {
-        sh "docker build -t hijaz/submisi-cicd-dicoding:latest"
+        sh "docker build -t hijaz/submisi-cicd-dicoding:latest ."
     }
     stage('Manual Approval') {
         input message: "Lanjutkan ke tahap Deploy?"

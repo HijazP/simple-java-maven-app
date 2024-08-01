@@ -1,6 +1,6 @@
 node {
-    checkout master
     // maven versi 3.9.8
+    checkout scm
     env.MAVEN_HOME="${tool 'maven'}"
     env.PATH="${env.MAVEN_HOME}/bin:${env.PATH}"
     stage('Build') {        

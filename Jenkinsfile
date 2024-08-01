@@ -9,6 +9,8 @@ node {
         sh "mvn test"
     }
     stage('Docker Build') {
+        sh "ls"
+        sh "pwd"
         sh "docker build -t hijaz/submisi-cicd-dicoding:latest ."
     }
     stage('Manual Approval') {

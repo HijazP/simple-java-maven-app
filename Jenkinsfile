@@ -3,17 +3,20 @@ node {
     env.MAVEN_HOME="${tool 'maven'}"
     env.PATH="${env.MAVEN_HOME}/bin:${env.PATH}"
     stage('Build') {        
-        sh "mvn -B -DskipTests clean package"
+        sh "mvn -B -DskipTests clean install"
     }
     stage('Test') {
         sh "mvn test"
+    }
+    stage('Docker Build') {
+        sh "docker build -t hijaz/submisi-cicd-dicoding:latest"
     }
     stage('Manual Approval') {
         input message: "Lanjutkan ke tahap Deploy?"
     }
     stage('Deploy') {
         sh "./jenkins/scripts/deliver.sh"
-        // echo "Jeda eksekusi pipeline selamat 1 menit"
-        // sh "sleep 1m"
+        echo "Jeda eksekusi pipeline selamat 1 menit"
+        sh "sleep 1m"
     }
 }
